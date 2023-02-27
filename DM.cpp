@@ -1,30 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-// For 4 samples
+// For 4 sample types
 
-class Jay{
+class Food{
 	int M; int *ans;
-	ofstream baal;
+	ofstream file;
 
 public:
-	Jay(string filename,int m=16):ans(new int[M]{0}),M(m){
+	Food(string filename,int m=16):ans(new int[M]{0}),M(m){
 		srand(time(NULL));
-		baal.open(filename,ios::out);
+		file.open(filename,ios::out);
 	}
 
-	~Jay(){
-		baal.close();
+	~Food(){
+		file.close();
 		delete [] ans;
 	}
 
-	void sob_faltu(int n){
+	void solve(int n){
 		int ch,idx,ct,k=1;
 
-		baal<<"Nil,A,B,C,D,AB,BC,CD,AC,BD,AD,ABC,BCD,CDA,DAB,ABCD"<<endl;
+		file<<"(ABCD)',A,B,C,D,AB,BC,CD,AC,BD,AD,ABC,BCD,CDA,DAB,ABCD"<<endl;
 
 		// cout<<"NO\tA\tB\tC\tD\tAB\tBC\tCD\tAC\tBD\tAD\tABC\tBCD\tCAD\tDAB\tABCD\n";
 
-		if(baal.fail()) return;
+		if(file.fail()) return;
 
 
 		for(int i=0;i<n;++i){
@@ -76,17 +76,17 @@ public:
 
 			for(int j=0;j<M;j++){
 				ans[j]+=arr[j];
-				baal<<(arr[j]?"Yes":"No")<<",";
+				file<<(arr[j]?"Yes":"No")<<",";
 				// cout<<arr[j]<<"\t"; 
 			}
-			baal<<endl;
+			file<<endl;
 			// cout<<endl;
 
 			delete [] arr;
 
 		}
 
-		for(int j=0;j<M;j++) baal<<ans[j]<<","; baal<<endl;
+		for(int j=0;j<M;j++) file<<ans[j]<<","; file<<endl;
 		// for(int j=0;j<M;j++) cout<<ans[j]<<" "; cout<<endl;
 	}
 
@@ -96,17 +96,17 @@ public:
 
 int main(int argc, char const *argv[]){
 	int n;
-	string lol;
+	string filename;
 
-	cout<<"Enter your file name with extension .csv!!"<<endl;
-	cout<<"--> "; cin>>lol;
+	cout<<"Enter your file name with extension(.csv)"<<endl;
+	cout<<"--> "; cin>>filename;
 
 	cout<<"How many sample you want?"<<endl;
 	cout<<"--> "; cin>>n;
 
-	Jay DM(lol);
+	Food DM(filename);
 
-	DM.sob_faltu(n);
+	DM.solve(n);
 }
 
 //code by jay-neo
