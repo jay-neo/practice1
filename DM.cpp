@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-// For 4 sample types
+// For only 4 sample types
 
 class Food{
 	int M; int *ans;
@@ -86,7 +86,7 @@ public:
 
 		}
 
-		for(int j=0;j<M;j++) file<<ans[j]<<","; file<<endl;
+		for(int j=0;j<M;j++) file<<ans[j]<<"\t,"; file<<endl;
 		// for(int j=0;j<M;j++) cout<<ans[j]<<" "; cout<<endl;
 	}
 
@@ -110,3 +110,4 @@ int main(int argc, char const *argv[]){
 }
 
 //code by jay-neo
+
