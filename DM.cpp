@@ -32,7 +32,7 @@ public:
 			int *arr = new int[M]{0};
 			ch=rand()%M;
 			ct=2;
-			//ch=i%M;
+			// ch=i%M;
 			
 			// cout<<"ch = "<<ch<<endl;
 
@@ -40,21 +40,9 @@ public:
 
 			if(ch<=4) ct=0;
 
-			else if(ch==M-1){while(ch-->1) arr[ch]++; ct=0;}
+			else if(ch==M-1){ ch-=10; ct=4;}
 
-			else if(ch>10){
-
-				k=6;
-
-				if(ch==14) k--;
-
-				arr[ch-k]++;
-				arr[ch-k+1]++;
-				(ch-k+3>10)?arr[k]++:arr[ch-k+3]++;
-
-				ch-=10;
-				ct=3; k=1;
-			}
+			else if(ch>10){ ch-=10; ct=3;}
 
 			else if(ch>=8){
 				ch-=6;
@@ -87,11 +75,10 @@ public:
 		}
 
 		for(int j=0;j<M;j++) file<<ans[j]<<"\t,"; file<<endl;
-		// for(int j=0;j<M;j++) cout<<ans[j]<<" "; cout<<endl;
+		// for(int j=0;j<M;j++) cout<<ans[j]<<"\t"; cout<<endl;
 	}
 
 };
-
 
 
 int main(int argc, char const *argv[]){
@@ -110,4 +97,3 @@ int main(int argc, char const *argv[]){
 }
 
 //code by jay-neo
-
